@@ -17,6 +17,8 @@ import { signupAPI } from '../../lib/api/auth';
 
 import { useDispatch } from 'react-redux';
 import { userActions } from '../../store/user';
+import { authActions } from '../../store/auth';
+
 // import { commonActions } from '../../store/common';
 
 import useValidateMode from '../../hooks/useValidateMode';
@@ -49,11 +51,6 @@ const Container = styled.form`
       ::placeholder {
         color: ${palette.gray_76};
       }
-    }
-    svg {
-      position: absolute;
-      right: 11px;
-      top: 16px;
     }
   }
   .sign-up-password-input-wrapper {
@@ -238,6 +235,11 @@ const SignUpModal: React.FC<IProps> = ({ closeModal }) => {
     }
   };
 
+  //* 회원가입 모달로 변경하기
+  const changeToLoginModal = () => {
+    dispatch(authActions.setAuthMode('login'));
+  };
+
   useEffect(() => {
     return () => {
       setValidateMode(false);
@@ -363,7 +365,7 @@ const SignUpModal: React.FC<IProps> = ({ closeModal }) => {
         <span
           className="sign-up-modal-set-login"
           role="presentation"
-          onClick={() => {}}
+          onClick={changeToLoginModal}
         >
           로그인
         </span>

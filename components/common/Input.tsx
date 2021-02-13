@@ -26,20 +26,12 @@ const Container = styled.div<InputContainerProps>`
       border-color: ${palette.dark_cyan} !important;
     }
   }
-  /* .input-icon-wrapper {
-    position: absolute;
-    top: 0;
-    right: 11px;
-    height: 46px;
-    display: flex;
-    align-items: center;
-  } */
-  // ?
-  /* svg {
+
+  svg {
     position: absolute;
     right: 11px;
     height: 46px;
-  } */
+  }
 
   .input-error-message {
     margin-top: 8px;
