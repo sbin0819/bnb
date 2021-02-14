@@ -7,6 +7,7 @@ import { cookieStringToObject } from '../lib/utils';
 
 import axios from 'axios';
 import { meAPI } from '../lib/api/auth';
+import { userActions } from '../store/user';
 
 const app = ({ Component, pageProps }: AppProps) => {
   return (
@@ -26,14 +27,12 @@ app.getInitialProps = async (context: AppContext) => {
   const { isLogged } = store.getState().user;
   try {
     if (!isLogged && cookieObject.access_token) {
-      // axios.defaults.headers.cookie = cookieObject.access_token;
+      axios.defaults.headers.cookie = cookieObject.access_token;
       // ! not working
       // const {data} = await meAPI();
       // ? axios.get 을 할 때 process.env 를 가지고 오지 못하는 거 같음
-      const { data } = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/api/auth/me`
-      );
-      console.log(data);
+      const { data } = await axios.get(`http://localhost:3000/api/auth/me`);
+      store.dispatch(userActions.setLoggedUser(data));
     }
   } catch (e) {
     console.log(e);

@@ -2,16 +2,18 @@ import { HYDRATE, createWrapper, MakeStore } from 'next-redux-wrapper';
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import {
   TypedUseSelectorHook,
-  useSelector as useReduxSelector
+  useSelector as useReduxSelector,
 } from 'react-redux';
 import user from './user';
 import common from './common';
 import auth from './auth';
+import registerRoom from './registerRoom';
 
 const rootReducer = combineReducers({
   user: user.reducer,
   common: common.reducer,
-  auth: auth.reducer
+  auth: auth.reducer,
+  registerRoom: registerRoom.reducer,
 });
 
 //* 스토어 타입
@@ -24,7 +26,7 @@ const reducer = (state: any, action: any) => {
     if (state === initialRootState) {
       return {
         ...state,
-        ...action.payload
+        ...action.payload,
       };
     }
     return state;
@@ -38,7 +40,7 @@ export const useSelector: TypedUseSelectorHook<RootState> = useReduxSelector;
 const initStore: MakeStore = () => {
   const store = configureStore({
     reducer,
-    devTools: true
+    devTools: true,
   });
   initialRootState = store.getState();
   return store;
