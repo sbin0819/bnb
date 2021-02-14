@@ -11,25 +11,15 @@ interface SignUpAPIBody {
 }
 
 //* 회원가입 api
-
 export const signupAPI = (body: SignUpAPIBody) =>
   axios.post<UserType>('/api/auth/signup', body);
-//* 회원가입 폼 제출하기
-// const onSubmitSignUp = async (event: React.FocusEvent<HTMLFormElement>) => {
-//     event.preventDefault();
 
-//     try {
-//       const signupBody = {
-//         email,
-//         lastname,
-//         firstname,
-//         password,
-//         birthday: new Date(
-//           `${birthYear}-${birthMonth!.replace('월', '')}-${birthday}`
-//         ).toString()
-//       };
-//       await signupAPI(signupBody);
-//     } catch (e) {
-//       console.log(e);
-//     }
-//   };
+//* 로그인 api
+export const loginAPI = (body: { email: string; password: string }) =>
+  axios.post<UserType>('/api/auth/login', body);
+
+//* 쿠키와 access_token의 유저 정보를 받아오는 api
+export const meAPI = () => axios.get<UserType>('/api/auth/me');
+
+//* 로그아웃 api
+export const logoutAPI = () => axios.delete('/api/auth/logout');

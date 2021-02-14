@@ -33,7 +33,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       lastname,
       password: hashedPassword,
       birthday,
-      profileImage: 'static/image/user/default_user_profile_image.png'
+      profileImage: '/static/image/user/default_user_profile_image.png',
     };
 
     const token = jwt.sign(String(newUser.id), process.env.JWT_SECRET!);
@@ -41,8 +41,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     res.setHeader(
       'Set-Cookie',
       `access_token=${token}; path=/; expires=${new Date(
-        Date.now() + 60 * 60 * 24 * 1000 * 3
-      )}; httponly`
+        Date.now() + 60 * 60 * 24 * 1000 * 3,
+      )}; httponly`,
     );
 
     Data.user.write([...users, newUser]);
