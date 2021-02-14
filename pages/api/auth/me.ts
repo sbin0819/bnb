@@ -7,7 +7,6 @@ import { StoredUserType } from '../../../types/user';
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'GET') {
     try {
-      console.log('req', req.headers);
       const accessToken = req.headers.cookie;
       if (!accessToken) {
         res.statusCode = 400;
