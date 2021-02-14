@@ -99,12 +99,19 @@ const Container = styled.form`
   }
 `;
 
-//*비밀번호 최소 자릿수
-const PASSWORD_MIN_LENGTH = 8;
-
 interface IProps {
   closeModal: () => void;
 }
+
+//*비밀번호 최소 자릿수
+const PASSWORD_MIN_LENGTH = 8;
+
+//* 선택할 수 없는 월 option
+const disabledMonths = ['월'];
+//* 선택할 수 없는 일 option
+const disabledDays = ['일'];
+//* 선택할 수 없는 년 option
+const disabledYears = ['년'];
 
 const SignUpModal: React.FC<IProps> = ({ closeModal }) => {
   const [email, setEmail] = useState('');
@@ -334,6 +341,7 @@ const SignUpModal: React.FC<IProps> = ({ closeModal }) => {
             value={birthMonth}
             onChange={onChangeBirthMonth}
             isValid={!!birthMonth}
+            disabledOptions={disabledMonths}
           />
         </div>
         <div className="sign-up-modal-birthday-day-selector">
@@ -344,6 +352,7 @@ const SignUpModal: React.FC<IProps> = ({ closeModal }) => {
             value={birthDay}
             onChange={onChangeBirthDay}
             isValid={!!birthDay}
+            disabledOptions={disabledDays}
           />
         </div>
         <div className="sign-up-modal-birthday-year-selector">
@@ -354,6 +363,7 @@ const SignUpModal: React.FC<IProps> = ({ closeModal }) => {
             value={birthYear}
             onChange={onChangeBirthYear}
             isValid={!!birthYear}
+            disabledOptions={disabledYears}
           />
         </div>
       </div>

@@ -29,6 +29,7 @@ app.getInitialProps = async (context: AppContext) => {
       // axios.defaults.headers.cookie = cookieObject.access_token;
       // ! not working
       // const {data} = await meAPI();
+      // ? axios.get 을 할 때 process.env 를 가지고 오지 못하는 거 같음
       const { data } = await axios.get(
         `${process.env.NEXT_PUBLIC_API_URL}/api/auth/me`
       );
