@@ -1,1 +1,11 @@
-[{"id":1,"email":"admin@gmail.com","firstname":"sb","lastname":"ad","password":"$2a$08$RR2nQ7qq475kop4VZcKW7u7O1QLl3TJVfaGlpcLoCTINqnbioajWy","birthday":"Fri Feb 02 2018 00:00:00 GMT+0900 (Korean Standard Time)","profileImage":"/static/image/user/default_user_profile_image.png"}]
+[
+  {
+    "id": 1,
+    "email": "admin@gmail.com",
+    "firstname": "sb",
+    "lastname": "ad",
+    "password": "$2a$08$RR2nQ7qq475kop4VZcKW7u7O1QLl3TJVfaGlpcLoCTINqnbioajWy",
+    "birthday": "Fri Feb 02 2018 00:00:00 GMT+0900 (Korean Standard Time)",
+    "profileImage": "/static/image/user/default_user_profile_image.png"
+  }
+]
