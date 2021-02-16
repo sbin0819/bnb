@@ -1,4 +1,5 @@
-import axios from 'axios';
+// ! axios 확인하기
+import axios from '.';
 import { UserType } from '../../types/user';
 //* 회원가입 body
 

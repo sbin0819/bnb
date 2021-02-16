@@ -1,14 +1,14 @@
 import { useMemo } from 'react';
 import styled from 'styled-components';
-import palette from '../../styles/palette';
-import Selector from '../common/Selector';
-import { largeBuildingTypeList } from '../../lib/staticData';
+import palette from '../../../styles/palette';
+import Selector from '../../common/Selector';
+import { largeBuildingTypeList } from '../../../lib/staticData';
 
 import { useDispatch } from 'react-redux';
-import { useSelector } from '../../store';
-import { registerRoomActions } from '../../store/registerRoom';
+import { useSelector } from '../../../store';
+import { registerRoomActions } from '../../../store/registerRoom';
 
-import RadioGroup from '../common/RadioGroup';
+import RadioGroup from '../../common/RadioGroup';
 import RegisterRoomFooter from './RegisterRoomFooter';
 
 const Container = styled.div`
@@ -92,42 +92,46 @@ const RegisterRoomBuilding: React.FC = () => {
   const detailBuildingOptions = useMemo(() => {
     switch (largeBuildingType) {
       case '아파트': {
-        const { apartmentBuildingTypeList } = require('../../lib/staticData');
+        const {
+          apartmentBuildingTypeList,
+        } = require('../../../lib/staticData');
         dispatch(
           registerRoomActions.setBuildingType(apartmentBuildingTypeList[0]),
         );
         return apartmentBuildingTypeList;
       }
       case '주택': {
-        const { houseBuildingTypeList } = require('../../lib/staticData');
+        const { houseBuildingTypeList } = require('../../../lib/staticData');
         dispatch(registerRoomActions.setBuildingType(houseBuildingTypeList[0]));
         return houseBuildingTypeList;
       }
       case '별채': {
         const {
           secondaryUnitBuildingTypeList,
-        } = require('../../lib/staticData');
+        } = require('../../../lib/staticData');
         dispatch(
           registerRoomActions.setBuildingType(secondaryUnitBuildingTypeList[0]),
         );
         return secondaryUnitBuildingTypeList;
       }
       case '독특한 숙소': {
-        const { uniqueSpaceBuildingTypeList } = require('../../lib/staticData');
+        const {
+          uniqueSpaceBuildingTypeList,
+        } = require('../../../lib/staticData');
         dispatch(
           registerRoomActions.setBuildingType(uniqueSpaceBuildingTypeList[0]),
         );
         return uniqueSpaceBuildingTypeList;
       }
       case 'B&B': {
-        const { bnbBuildingTypeList } = require('../../lib/staticData');
+        const { bnbBuildingTypeList } = require('../../../lib/staticData');
         dispatch(registerRoomActions.setBuildingType(bnbBuildingTypeList[0]));
         return bnbBuildingTypeList;
       }
       case '부티크호텔': {
         const {
           boutiqueHotelBuildingTypeList,
-        } = require('../../lib/staticData');
+        } = require('../../../lib/staticData');
         dispatch(
           registerRoomActions.setBuildingType(boutiqueHotelBuildingTypeList[0]),
         );
@@ -161,6 +165,14 @@ const RegisterRoomBuilding: React.FC = () => {
     dispatch(registerRoomActions.setIsSetUpForGuest(value));
   };
 
+  //* 모든 값이 있는지 확인하기
+  const isValid = useMemo(() => {
+    if (!largeBuildingType || !buildingType || !roomType || !isSetUpForGuest) {
+      return false;
+    }
+    return true;
+  }, [largeBuildingType, buildingType, roomType, isSetUpForGuest]);
+
   return (
     <Container>
       <h2>등록할 숙소 종류는 무엇인가요?</h2>
@@ -171,6 +183,7 @@ const RegisterRoomBuilding: React.FC = () => {
           value="하나를 선택해주세요."
           defaultValue="하나를 선택해주세요"
           disabledOptions={disabledlargeBuildingTypeOptions}
+          isValid={!!largeBuildingType}
           label="우선 범위를 좁혀볼까요?"
           options={largeBuildingTypeList}
           onChange={onChangeLargeBuildingType}
@@ -181,6 +194,7 @@ const RegisterRoomBuilding: React.FC = () => {
           type="register"
           value={buildingType || undefined}
           disabled={!largeBuildingType}
+          isValid={!!buildingType}
           label="건물 유형을 선택하세요."
           options={detailBuildingOptions}
           onChange={onChangeBuildingType}
@@ -190,6 +204,7 @@ const RegisterRoomBuilding: React.FC = () => {
         <>
           <div className="register-room-room-type-radio">
             <RadioGroup
+              isValid={!!roomType}
               label="게스트가 묵게 될 숙소 유형을 골라주세요."
               value={roomType}
               options={roomTypeRadioOptions}
@@ -198,6 +213,7 @@ const RegisterRoomBuilding: React.FC = () => {
           </div>
           <div className="register-room-is-setup-for-guest-radio">
             <RadioGroup
+              isValid={isSetUpForGuest !== null}
               label="게스트만 사용하도록 만들어진 숙소인가요?."
               value={isSetUpForGuest}
               onChange={onChangeIsSetUpForGuest}
@@ -207,7 +223,7 @@ const RegisterRoomBuilding: React.FC = () => {
         </>
       )}
       <RegisterRoomFooter
-        isValid={false}
+        isValid={isValid}
         prevHref="/"
         nextHref="/room/register/bedrooms"
       />
