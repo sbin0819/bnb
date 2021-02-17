@@ -60,7 +60,6 @@ const RegisterRoomBedTypes: React.FC<IProps> = ({ bedroom }) => {
   );
 
   const dispatch = useDispatch();
-  const { setBedTypeCount } = useSelector(({ registerRoom }) => registerRoom);
 
   //* 침대 개수 총합
   const totalBedsCount = useMemo(() => {
@@ -105,7 +104,7 @@ const RegisterRoomBedTypes: React.FC<IProps> = ({ bedroom }) => {
             {bedsText}
           </p>
         </div>
-        <Button onClick={toggleOpened} styleType="register" color="white">
+        <Button onClick={toggleOpened} width={'200px'}>
           {opened && '완료'}
           {!opened &&
             (totalBedsCount === 0 ? '침대 추가하기' : '침대 수정하기')}
