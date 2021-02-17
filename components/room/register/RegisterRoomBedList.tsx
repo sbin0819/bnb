@@ -9,7 +9,7 @@ const RegisterRoomBedRoomList: React.FC = () => {
       {bedList.map((bedroom, index) => (
         <RegisterRoomBedTypes key={index} bedroom={bedroom} />
       ))}
-      {/* <RegisterRoomPublicBedTypes /> */}
+      <RegisterRoomPublicBedTypes />
     </ul>
   );
 };

@@ -141,13 +141,13 @@ const SignUpModal: React.FC<IProps> = ({ closeModal }) => {
       !lastname ||
       password.includes(lastname) ||
       password.includes(email.split('@')[0]),
-    [password, lastname, email]
+    [password, lastname, email],
   );
 
   //* 비밀번호가 최소 자릿수 이상인지
   const isPasswordOverMinLength = useMemo(
     () => !!password && password.length >= PASSWORD_MIN_LENGTH,
-    [password]
+    [password],
   );
 
   //* 비밀번호가 숫자나 특수기호를 포함하는지
@@ -157,7 +157,7 @@ const SignUpModal: React.FC<IProps> = ({ closeModal }) => {
         /[{}[\]/?.,;:|)*~`!^\-_+<>@#$%&\\=('"]/g.test(password) ||
         /[0-9]/g.test(password)
       ),
-    [password]
+    [password],
   );
 
   //* email
@@ -230,8 +230,8 @@ const SignUpModal: React.FC<IProps> = ({ closeModal }) => {
           firstname,
           password,
           birthday: new Date(
-            `${birthYear}-${birthMonth!.replace('월', '')}-${birthDay}`
-          ).toString()
+            `${birthYear}-${birthMonth!.replace('월', '')}-${birthDay}`,
+          ).toString(),
         };
         const { data } = await signupAPI(signupBody);
         dispatch(userActions.setLoggedUser(data));
@@ -368,7 +368,9 @@ const SignUpModal: React.FC<IProps> = ({ closeModal }) => {
         </div>
       </div>
       <div className="sign-up-modal-submit-button-wrapper">
-        <Button type="submit">가입하기</Button>
+        <Button type="submit" color="bittersweet">
+          가입하기
+        </Button>
       </div>
       <p>
         이미 에어비엔비 계정이 있나요?
