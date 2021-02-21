@@ -1,15 +1,15 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-nextbnb-dev-105530-authRole",
-      "UnauthRoleArn": "arn:aws:iam::209790425577:role/amplify-nextbnb-dev-105530-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::209790425577:role/amplify-nextbnb-dev-105530-authRole",
+      "AuthRoleName": "amplify-nextapp-dev-120341-authRole",
+      "UnauthRoleArn": "arn:aws:iam::209790425577:role/amplify-nextapp-dev-120341-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::209790425577:role/amplify-nextapp-dev-120341-authRole",
       "Region": "ap-northeast-2",
-      "DeploymentBucketName": "amplify-nextbnb-dev-105530-deployment",
-      "UnauthRoleName": "amplify-nextbnb-dev-105530-unauthRole",
-      "StackName": "amplify-nextbnb-dev-105530",
-      "StackId": "arn:aws:cloudformation:ap-northeast-2:209790425577:stack/amplify-nextbnb-dev-105530/e19e4e20-73e7-11eb-9e21-021597211ac0",
-      "AmplifyAppId": "d3ods72075axt6"
+      "DeploymentBucketName": "amplify-nextapp-dev-120341-deployment",
+      "UnauthRoleName": "amplify-nextapp-dev-120341-unauthRole",
+      "StackName": "amplify-nextapp-dev-120341",
+      "StackId": "arn:aws:cloudformation:ap-northeast-2:209790425577:stack/amplify-nextapp-dev-120341/686a6d90-73f1-11eb-943c-0aaa5f61c31a",
+      "AmplifyAppId": "dh33twrmq5mkq"
     }
   }
 }

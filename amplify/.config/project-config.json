@@ -1,14 +1,14 @@
 {
-  "projectName": "nextbnb",
+  "projectName": "nextapp",
   "version": "3.0",
   "frontend": "javascript",
   "javascript": {
     "framework": "react",
     "config": {
       "SourceDir": "src",
-      "DistributionDir": ".next",
-      "BuildCommand": "yarn build",
-      "StartCommand": "yarn start"
+      "DistributionDir": "out",
+      "BuildCommand": "npm run-script build",
+      "StartCommand": "npm run-script start"
     }
   },
   "providers": [
