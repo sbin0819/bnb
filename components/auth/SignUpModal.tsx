@@ -346,24 +346,26 @@ const SignUpModal: React.FC<IProps> = ({ closeModal }) => {
         </div>
         <div className="sign-up-modal-birthday-day-selector">
           <Selector
+            type="normal"
             options={dayList}
             disabledOptions={['일']}
             defaultValue="일"
             value={birthDay}
             onChange={onChangeBirthDay}
             isValid={!!birthDay}
-            disabledOptions={disabledDays}
+            // disabledOptions={disabledDays}
           />
         </div>
         <div className="sign-up-modal-birthday-year-selector">
           <Selector
+            type="normal"
             options={yearList}
             disabledOptions={['년']}
             defaultValue="년"
             value={birthYear}
             onChange={onChangeBirthYear}
             isValid={!!birthYear}
-            disabledOptions={disabledYears}
+            // disabledOptions={disabledYears}
           />
         </div>
       </div>
