@@ -99,7 +99,7 @@ const RegisterRoomConvenience: React.FC = () => {
       {!isEmpty(photos) && <RegisterRoomPhotoCardList photos={photos} />}
       <RegisterRoomFooter
         prevHref="/room/register/amentities"
-        nextHref="/room/register/photo"
+        nextHref="/room/register/description"
       />
     </Container>
   );

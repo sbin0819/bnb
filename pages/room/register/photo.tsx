@@ -3,8 +3,8 @@ import { NextPage } from 'next';
 
 import RegisterRoomPhoto from '../../../components/room/register/RegisterRoomPhoto';
 
-const geometry: NextPage = () => {
+const photo: NextPage = () => {
   return <RegisterRoomPhoto />;
 };
 
-export default geometry;
+export default photo;
