@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import palette from '../../../styles/palette';
 
 import { useSelector } from '../../../store';
-// import { useDispatch } from 'react-redux';
-// import { registerRoomActions } from '../../../store/registerRoom';
+import { useDispatch } from 'react-redux';
+import { registerRoomActions } from '../../../store/registerRoom';
 
 import isEmpty from 'lodash/isEmpty';
 import UploadIcon from '../../../public/static/svg/register/upload.svg';
@@ -11,6 +11,7 @@ import Button from '../../common/Button';
 
 import { uploadFileAPI } from '../../../lib/api/file';
 
+import RegisterRoomPhotoCardList from './RegisterRoomPhotoCardList';
 import RegisterRoomFooter from './RegisterRoomFooter';
 
 const Container = styled.div`
@@ -56,6 +57,7 @@ const Container = styled.div`
 `;
 
 const RegisterRoomConvenience: React.FC = () => {
+  const dispatch = useDispatch();
   const { photos } = useSelector(({ registerRoom }) => registerRoom);
 
   //* 이미지 업로드 하기
@@ -66,7 +68,10 @@ const RegisterRoomConvenience: React.FC = () => {
       const file = files[0];
       formdata.append('file', file);
       try {
-        await uploadFileAPI(formdata);
+        const { data } = await uploadFileAPI(formdata);
+        if (data) {
+          dispatch(registerRoomActions.setPhotos([...photos, data]));
+        }
       } catch (e) {
         console.log(e);
       }
@@ -91,6 +96,7 @@ const RegisterRoomConvenience: React.FC = () => {
           </>
         </div>
       )}
+      {!isEmpty(photos) && <RegisterRoomPhotoCardList photos={photos} />}
       <RegisterRoomFooter
         prevHref="/room/register/amentities"
         nextHref="/room/register/photo"
