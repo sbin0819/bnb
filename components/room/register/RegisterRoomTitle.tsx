@@ -5,7 +5,7 @@ import { useSelector } from '../../../store';
 import { useDispatch } from 'react-redux';
 import { registerRoomActions } from '../../../store/registerRoom';
 
-import Textarea from '../../common/Textarea';
+import Input from '../../common/Input';
 import RegisterRoomFooter from './RegisterRoomFooter';
 
 const Container = styled.div`
@@ -25,7 +25,6 @@ const Container = styled.div`
     max-width: 400px;
     margin-bottom: 24px;
   }
-
   .register-room-description-wrapper {
     width: 430px;
     font-size: 14px;
@@ -35,27 +34,27 @@ const Container = styled.div`
 
 const RegisterRoomDescription: React.FC = () => {
   const dispatch = useDispatch();
-  const { description } = useSelector(({ registerRoom }) => registerRoom);
+  const { title } = useSelector(({ registerRoom }) => registerRoom);
 
-  //* 숙소 설명 변경 시
-  const onChangeDescription = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    dispatch(registerRoomActions.setDescription(e.target.value));
+  //* 제목 변경 시
+  const onChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
+    dispatch(registerRoomActions.setTitle(e.target.value));
   };
 
   return (
     <Container>
-      <h2>게스트에게 숙소에 대해 설명해주세요.</h2>
-      <h3>8단계</h3>
-      <p className="register-room-step-info">
-        숙소의 장점, 특별한 편의 시설(예: 빠른 와이파이 또는 주차 시설)과 주변
-        지역의 매력을 소개해주세요.
-      </p>
+      <h2>숙소의 제목을 만드세요.</h2>
+      <h3>9단계</h3>
       <div className="register-room-description-wrapper">
-        <Textarea value={description} onChange={onChangeDescription} />
+        <Input
+          label="숙소의 특징과 장점을 강조하는 제목으로 게스트의 관심을 끌어보세요."
+          value={title}
+          onChange={onChangeTitle}
+        />
       </div>
       <RegisterRoomFooter
-        prevHref="/room/register/photo"
-        nextHref="/room/register/title"
+        prevHref="/room/register/description"
+        nextHref="/room/register/price"
       />
     </Container>
   );
