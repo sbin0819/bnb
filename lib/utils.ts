@@ -23,3 +23,8 @@ export const getNumber = (string: string): number | null => {
   }
   return null;
 };
+
+//* 금액 변경시
+export const makeMoneyString = (num: number) => {
+  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+};

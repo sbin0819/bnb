@@ -32,7 +32,7 @@ const Container = styled.div`
   }
 `;
 
-const RegisterRoomDescription: React.FC = () => {
+const RegisterRoomTitle: React.FC = () => {
   const dispatch = useDispatch();
   const { title } = useSelector(({ registerRoom }) => registerRoom);
 
@@ -60,4 +60,4 @@ const RegisterRoomDescription: React.FC = () => {
   );
 };
 
-export default RegisterRoomDescription;
+export default RegisterRoomTitle;

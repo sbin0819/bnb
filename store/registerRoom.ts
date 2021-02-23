@@ -249,6 +249,10 @@ const registerRoom = createSlice({
     setTitle(state, action: PayloadAction<string>) {
       state.title = action.payload;
     },
+    //* 숙소 요금 변경하기
+    setPrice(state, action: PayloadAction<number>) {
+      state.price = action.payload;
+    },
   },
 });
 
