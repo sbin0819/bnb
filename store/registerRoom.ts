@@ -263,6 +263,10 @@ const registerRoom = createSlice({
     setStartDate(state, action: PayloadAction<string | null>) {
       state.startDate = action.payload;
     },
+    //* 에약 마감 날짜 변경하기
+    setEndDate(state, action: PayloadAction<string | null>) {
+      state.endDate = action.payload;
+    },
   },
 });
 
