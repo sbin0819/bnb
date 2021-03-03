@@ -117,8 +117,8 @@ const RegisterRoomDate: React.FC = () => {
         </div>
       </div>
       <RegisterRoomFooter
-        prevHref="/room/register/description"
-        nextHref="/room/register/price"
+        prevHref="/room/register/price"
+        nextHref="/room/register/checklist"
       />
     </Container>
   );
