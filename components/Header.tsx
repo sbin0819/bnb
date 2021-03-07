@@ -81,7 +81,6 @@ const Container = styled.div`
     }
   }
 
-  /** react-outside-click-handler div */
   .header-logo-wrapper + div {
     position: relative;
   }
